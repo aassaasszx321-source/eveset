@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://everset-iptv.manus.space/sitemap.xml
