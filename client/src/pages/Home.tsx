@@ -171,7 +171,7 @@ function Navbar() {
               className="everset-btn-whatsapp flex items-center gap-2 px-5 py-2.5 text-sm font-bold"
             >
               <MessageCircle size={18} />
-              اشترك الآن
+              للتواصل والاستفسار
             </a>
           </div>
 
@@ -209,7 +209,7 @@ function Navbar() {
               onClick={() => setMenuOpen(false)}
             >
               <MessageCircle size={18} />
-              اشترك الآن عبر واتساب
+              للتواصل والاستفسار
             </a>
           </div>
         )}
@@ -296,7 +296,7 @@ function HeroSection() {
             className="everset-btn-whatsapp flex items-center gap-3 px-8 py-4 text-lg font-bold rounded-xl"
           >
             <MessageCircle size={22} />
-            اشترك الآن عبر واتساب
+            للتواصل والاستفسار
           </a>
           <a
             href="#features"
@@ -528,7 +528,7 @@ function ContentSection() {
               className="everset-btn-whatsapp inline-flex items-center gap-3 px-8 py-4 text-base font-bold rounded-xl mt-8"
             >
               <MessageCircle size={20} />
-              احصل على اشتراكك الآن
+              للتواصل والاستفسار
             </a>
           </div>
 
@@ -724,7 +724,7 @@ function ContactSection() {
               className="everset-btn-whatsapp flex items-center gap-3 px-10 py-4 text-lg font-bold rounded-xl"
             >
               <MessageCircle size={24} />
-              تواصل عبر واتساب الآن
+              للتواصل والاستفسار
             </a>
             <a
               href={`tel:+${WHATSAPP_NUMBER}`}
@@ -765,15 +765,15 @@ function Footer() {
             </p>
           </div>
 
-          <a
-            href={WHATSAPP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="everset-btn-whatsapp flex items-center gap-2 px-5 py-2.5 text-sm font-bold rounded-xl"
-          >
-            <MessageCircle size={18} />
-            واتساب
-          </a>
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="everset-btn-whatsapp flex items-center gap-2 px-5 py-2.5 text-sm font-bold rounded-xl"
+            >
+              <MessageCircle size={18} />
+              تواصل معنا
+            </a>
         </div>
       </div>
     </footer>
