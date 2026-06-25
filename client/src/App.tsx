@@ -11,6 +11,9 @@ import ActivationSamsung from "./pages/ActivationSamsung";
 import SubscriptionEverest from "./pages/SubscriptionEverest";
 import SubscriptionHulk from "./pages/SubscriptionHulk";
 import SubscriptionFalcon from "./pages/SubscriptionFalcon";
+import SubscriptionStrong from "./pages/SubscriptionStrong";
+import SubscriptionVulture from "./pages/SubscriptionVulture";
+import SubscriptionSmarters from "./pages/SubscriptionSmarters";
 
 function Router() {
   return (
@@ -22,6 +25,9 @@ function Router() {
       <Route path={"/subscription/everest"} component={SubscriptionEverest} />
       <Route path={"/subscription/hulk"} component={SubscriptionHulk} />
       <Route path={"/subscription/falcon"} component={SubscriptionFalcon} />
+      <Route path={"/subscription/strong"} component={SubscriptionStrong} />
+      <Route path={"/subscription/vulture"} component={SubscriptionVulture} />
+      <Route path={"/subscription/smarters"} component={SubscriptionSmarters} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>
