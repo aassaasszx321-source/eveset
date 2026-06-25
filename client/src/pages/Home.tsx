@@ -120,7 +120,7 @@ export default function Home() {
 
           {/* Center Logo */}
           <div className="flex-1 flex justify-center">
-            <img src="/assets/images/9kpro-logo.png" alt="9K Pro TV" className="h-12 w-auto" />
+            <img src="/assets/images/9kpro-logo.png" alt="9K Pro TV" className="h-16 w-auto" />
           </div>
 
           {/* Right Spacer */}
