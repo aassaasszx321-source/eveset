@@ -1,15 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { MessageCircle, Star, Zap, Smartphone, Apple, Tv } from 'lucide-react';
 import { useLocation } from 'wouter';
+import ProductDetailDrawer from '@/components/ProductDetailDrawer';
 
 const PACKAGES = [
   {
     id: 'everest',
     name: 'سيرفر إيفرست',
     subtitle: 'الاشتراك الأفضل',
-    logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663785462390/UYCFDTDq8euze4tP5KjcSD/everest-logo-62sNgjvtp29aQgQiEFe3nm.png',
+    logo: '/assets/images/everest-logo.png',
     prices: { '3': 80, '6': 130, '12': 190 },
     originalPrice12: 250,
     features: { channels: 10000, movies: 30000, series: 13000 },
@@ -19,7 +20,7 @@ const PACKAGES = [
     id: 'strong4k',
     name: 'سترونق 4K',
     subtitle: 'جودة عالية جداً',
-    logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663785462390/UYCFDTDq8euze4tP5KjcSD/strong4k-logo-62sNgjvtp29aQgQiEFe3nm.png',
+    logo: '/assets/images/strong4k-logo.png',
     prices: { '3': 80, '6': 130, '12': 199 },
     features: { channels: 10000, movies: 70000, series: 15000 },
     color: '#FFD700'
@@ -28,7 +29,7 @@ const PACKAGES = [
     id: 'hulk',
     name: 'هولك IPTV',
     subtitle: 'قوي وموثوق',
-    logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663785462390/UYCFDTDq8euze4tP5KjcSD/hulk-logo-62sNgjvtp29aQgQiEFe3nm.jpg',
+    logo: '/assets/images/hulk-logo.jpg',
     prices: { '3': 100, '6': 150, '12': 250 },
     features: { channels: 10000, movies: 33000, series: 7000 },
     color: '#D4AF37'
@@ -37,7 +38,7 @@ const PACKAGES = [
     id: 'falcon',
     name: 'فالكون IPTV',
     subtitle: 'الاشتراك العصري',
-    logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663785462390/UYCFDTDq8euze4tP5KjcSD/falcon-logo-62sNgjvtp29aQgQiEFe3nm.png',
+    logo: '/assets/images/falcon-logo.png',
     prices: { '3': 130, '6': 200, '12': 300 },
     features: { channels: 7000, movies: 24000, series: 10000 },
     color: '#FFD700'
@@ -46,7 +47,7 @@ const PACKAGES = [
     id: 'vulture',
     name: 'فولتشر IPTV',
     subtitle: 'الترفيهي المتميز',
-    logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663785462390/UYCFDTDq8euze4tP5KjcSD/vulture-logo-62sNgjvtp29aQgQiEFe3nm.png',
+    logo: '/assets/images/vulture-logo.png',
     prices: { '3': 69, '6': 99, '12': 149 },
     features: { channels: 10000, movies: 25000, series: 15000 },
     color: '#D4AF37'
@@ -55,44 +56,29 @@ const PACKAGES = [
     id: 'smarters',
     name: 'IPTV Smarters',
     subtitle: 'تطبيق موثوق',
-    logo: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663785462390/UYCFDTDq8euze4tP5KjcSD/smarters-logo-62sNgjvtp29aQgQiEFe3nm.png',
+    logo: '/assets/images/smarters-logo.png',
     prices: { '12': 99 },
     features: { channels: 10000, movies: 33000, series: 7000 },
-    color: '#D4AF37',
-    singleOption: true
+    color: '#D4AF37'
   }
 ];
 
-const Counter = ({ target }: { target: number }) => {
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    let current = 0;
-    const increment = Math.ceil(target / 50);
-    const interval = setInterval(() => {
-      current += increment;
-      if (current >= target) {
-        setCount(target);
-        clearInterval(interval);
-      } else {
-        setCount(current);
-      }
-    }, 20);
-    return () => clearInterval(interval);
-  }, [target]);
-
-  return <span>{count.toLocaleString('ar-SA')}</span>;
-};
-
 export default function Home() {
   const [, setLocation] = useLocation();
-  const [selectedPackage, setSelectedPackage] = useState<string | null>(null);
-  const [selectedDuration, setSelectedDuration] = useState<'3' | '6' | '12'>('12');
+  const [selectedProduct, setSelectedProduct] = useState<any>(null);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-  const handleWhatsApp = (packageName: string, duration: string, price: number) => {
-    const message = `مرحباً 9kpro TV، أود الاشتراك في الباقة التالية:\n🔹 السيرفر: ${packageName}\n⏱️ المدة: ${duration} أشهر\n💰 السعر: ${price} ريال سعودي\nيرجى تزويدي بطرق الدفع المتاحة لتفعيل الاشتراك.`;
-    const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/966580928565?text=${encodedMessage}`, '_blank');
+  const handlePackageClick = (pkg: any, duration: '3' | '6' | '12') => {
+    const price = pkg.prices[duration];
+    if (price) {
+      setSelectedProduct({
+        ...pkg,
+        price,
+        duration,
+        originalPrice: duration === '12' ? pkg.originalPrice12 : undefined
+      });
+      setIsDrawerOpen(true);
+    }
   };
 
   const handleGeneralWhatsApp = () => {
@@ -104,10 +90,10 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground" dir="rtl">
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-accent/20">
+      <header className="sticky top-0 z-40 bg-background/80 backdrop-blur-md border-b border-accent/20">
         <div className="container flex items-center justify-between py-4">
           <div className="flex items-center gap-2">
-            <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663785462390/UYCFDTDq8euze4tP5KjcSD/9kpro-logo-62sNgjvtp29aQgQiEFe3nm.jpg" alt="9K Pro TV" className="h-12 w-auto" />
+            <img src="/assets/images/9kpro-logo.jpg" alt="9K Pro TV" className="h-12 w-auto" />
           </div>
           <Button onClick={handleGeneralWhatsApp} className="bg-accent text-accent-foreground hover:bg-accent/90">
             <MessageCircle className="w-4 h-4 ml-2" />
@@ -142,81 +128,65 @@ export default function Home() {
             اختر الباقة المناسبة لك بأسعار تنافسية
           </p>
 
-          {/* Duration Selector */}
-          <div className="flex justify-center gap-4 mb-12">
-            {['3', '6', '12'].map((duration) => (
-              <button
-                key={duration}
-                onClick={() => setSelectedDuration(duration as '3' | '6' | '12')}
-                className={`px-6 py-2 rounded-lg font-semibold transition-all ${
-                  selectedDuration === duration
-                    ? 'bg-accent text-accent-foreground'
-                    : 'bg-card text-foreground border border-accent/30 hover:border-accent'
-                }`}
-              >
-                {duration} أشهر
-              </button>
-            ))}
-          </div>
-
           {/* Packages Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {PACKAGES.map((pkg) => {
-              const price = pkg.prices[selectedDuration];
-              if (!price) return null;
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {PACKAGES.map((pkg) => (
+              <div key={pkg.id} className="space-y-6">
+                {/* Package Header */}
+                <div className="text-center">
+                  <img src={pkg.logo} alt={pkg.name} className="h-16 w-auto mx-auto mb-3" />
+                  <h3 className="text-2xl font-bold">{pkg.name}</h3>
+                  <p className="text-accent text-sm">{pkg.subtitle}</p>
+                </div>
 
-              return (
-                <Card key={pkg.id} className="gold-border bg-card hover:gold-glow transition-all overflow-hidden group cursor-pointer" onClick={() => setSelectedPackage(pkg.id)}>
-                  <div className="p-6">
-                    <div className="flex justify-center mb-4">
-                      <img src={pkg.logo} alt={pkg.name} className="h-16 w-auto" />
-                    </div>
-                    <h3 className="text-2xl font-bold text-center mb-2">{pkg.name}</h3>
-                    <p className="text-center text-accent text-sm mb-6">{pkg.subtitle}</p>
-
-                    {/* Price */}
-                    <div className="text-center mb-6">
-                      <div className="text-4xl font-bold text-accent mb-2">
-                        {price}
-                        <span className="text-lg text-muted-foreground"> ر.س</span>
-                      </div>
-                      {pkg.originalPrice12 && selectedDuration === '12' && (
-                        <p className="text-sm text-muted-foreground line-through">
-                          {pkg.originalPrice12} ر.س
+                {/* Premium Grid Layout */}
+                <div className="space-y-4">
+                  {/* Row 1: 12 Months & 6 Months */}
+                  <div className="grid grid-cols-2 gap-4">
+                    {/* 12 Months */}
+                    <Card
+                      className="gold-border bg-card hover:gold-glow transition-all cursor-pointer p-4 text-center"
+                      onClick={() => handlePackageClick(pkg, '12')}
+                    >
+                      <p className="text-xs text-muted-foreground mb-2">سنة واحدة</p>
+                      <p className="text-2xl font-bold text-accent mb-2">
+                        {pkg.prices['12']}
+                      </p>
+                      <p className="text-xs text-muted-foreground">ر.س</p>
+                      {pkg.originalPrice12 && (
+                        <p className="text-xs line-through text-muted-foreground/50 mt-1">
+                          {pkg.originalPrice12}
                         </p>
                       )}
-                    </div>
+                    </Card>
 
-                    {/* Features */}
-                    <div className="space-y-3 mb-6">
-                      <div className="flex items-center justify-between text-sm">
-                        <span className="text-muted-foreground">قنوات</span>
-                        <span className="font-semibold text-accent"><Counter target={pkg.features.channels} /></span>
-                      </div>
-                      <div className="flex items-center justify-between text-sm">
-                        <span className="text-muted-foreground">أفلام</span>
-                        <span className="font-semibold text-accent"><Counter target={pkg.features.movies} /></span>
-                      </div>
-                      <div className="flex items-center justify-between text-sm">
-                        <span className="text-muted-foreground">مسلسلات</span>
-                        <span className="font-semibold text-accent"><Counter target={pkg.features.series} /></span>
-                      </div>
-                    </div>
-
-                    {/* CTA Button */}
-                    <Button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleWhatsApp(pkg.name, selectedDuration, price);
-                      }}
-                      className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
+                    {/* 6 Months */}
+                    <Card
+                      className="gold-border bg-card hover:gold-glow transition-all cursor-pointer p-4 text-center"
+                      onClick={() => handlePackageClick(pkg, '6')}
                     >
-                      اطلب الآن عبر الواتساب
-                    </Button>
+                      <p className="text-xs text-muted-foreground mb-2">6 أشهر</p>
+                      <p className="text-2xl font-bold text-accent mb-2">
+                        {pkg.prices['6']}
+                      </p>
+                      <p className="text-xs text-muted-foreground">ر.س</p>
+                    </Card>
                   </div>
-                </Card>
-              );
-            })}
+
+                  {/* Row 2: 3 Months (Centered) */}
+                  <Card
+                    className="gold-border bg-card hover:gold-glow transition-all cursor-pointer p-4 text-center"
+                    onClick={() => handlePackageClick(pkg, '3')}
+                  >
+                    <p className="text-xs text-muted-foreground mb-2">3 أشهر</p>
+                    <p className="text-2xl font-bold text-accent mb-2">
+                      {pkg.prices['3']}
+                    </p>
+                    <p className="text-xs text-muted-foreground">ر.س</p>
+                  </Card>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -296,6 +266,13 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {/* Product Detail Drawer */}
+      <ProductDetailDrawer
+        isOpen={isDrawerOpen}
+        onClose={() => setIsDrawerOpen(false)}
+        package={selectedProduct}
+      />
     </div>
   );
 }
