@@ -39,7 +39,7 @@ const PACKAGES = [
     id: 'falcon',
     name: 'فالكون IPTV',
     subtitle: 'الاشتراك العصري',
-    logo: 'https://media.zid.store/cdn-cgi/image/w=auto,q=100,f=auto/https://media.zid.store/05d0953b-b7e2-47c6-af1b-eb46a948c8df/44d0a66f-ce07-4a1c-b5a9-65ccd196676c.png',
+    logo: '/assets/images/falcon-logo.png',
     prices: { '3': 130, '6': 200, '12': 300 },
     features: { channels: 7000, movies: 24000, series: 10000 },
     color: '#FFD700'
@@ -48,7 +48,7 @@ const PACKAGES = [
     id: 'vulture',
     name: 'فولتشر IPTV',
     subtitle: 'الترفيهي المتميز',
-    logo: 'https://media.zid.store/cdn-cgi/image/w=auto,q=100,f=auto/https://media.zid.store/05d0953b-b7e2-47c6-af1b-eb46a948c8df/9af8dd15-5cc0-42bb-9684-2477416105ed.png',
+    logo: '/assets/images/vulture-logo.png',
     prices: { '3': 69, '6': 99, '12': 149 },
     features: { channels: 10000, movies: 25000, series: 15000 },
     color: '#D4AF37'
@@ -57,7 +57,7 @@ const PACKAGES = [
     id: 'smarters',
     name: 'IPTV Smarters',
     subtitle: 'تطبيق موثوق',
-    logo: 'https://media.zid.store/cdn-cgi/image/w=auto,q=100,f=auto/https://media.zid.store/05d0953b-b7e2-47c6-af1b-eb46a948c8df/d94288e8-52f1-4eb5-b24f-5dfd8fee6d4d.png',
+    logo: '/assets/images/smarters-logo.png',
     prices: { '12': 99 },
     features: { channels: 10000, movies: 33000, series: 7000 },
     color: '#D4AF37'
@@ -120,7 +120,7 @@ export default function Home() {
 
           {/* Center Logo */}
           <div className="flex-1 flex justify-center">
-            <img src="https://i.imgur.com/ZWrKn39.png" alt="9K Pro TV" className="h-12 w-auto" />
+            <img src="/assets/images/9kpro-logo-main.png" alt="9K Pro TV" className="h-12 w-auto" />
           </div>
 
           {/* Right Spacer */}
@@ -136,7 +136,7 @@ export default function Home() {
             ارتق إلى قمة تجربة المشاهدة
           </h1>
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            مع 9kpro TV - أفضل خدمات البث المباشر والأفلام والمسلسلات بجودة 4K
+            مع اشتراك 9kpro TV - أفضل خدمات البث المباشر والأفلام والمسلسلات بجودة 4K
           </p>
           <Button onClick={handleGeneralWhatsApp} size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8 py-6">
             تواصل معنا الآن
@@ -293,10 +293,10 @@ export default function Home() {
         href="https://wa.me/966580928565"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-8 right-8 z-50 bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-2xl animate-pulse transition-all duration-300 hover:scale-110 flex items-center justify-center"
+        className="fixed bottom-8 right-8 z-50 bg-green-500 hover:bg-green-600 rounded-full shadow-2xl animate-pulse transition-all duration-300 hover:scale-110 flex items-center justify-center w-16 h-16"
         aria-label="Contact via WhatsApp"
       >
-        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+        <svg className="w-8 h-8" viewBox="0 0 24 24" fill="white">
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-4.255.949c-1.238.503-2.335 1.236-3.356 2.258-1.688 1.694-2.637 3.957-2.637 6.38 0 1.059.135 2.143.395 3.199L1.9 23.48l3.8-1.188c.94.558 2.064.853 3.285.853 1.285 0 2.541-.195 3.74-.57 1.752-.532 3.321-1.423 4.61-2.614 1.288-1.191 2.247-2.922 2.773-4.736.526-1.813.754-3.79.754-5.868 0-2.423-.949-4.686-2.637-6.38-1.688-1.694-3.957-2.637-6.38-2.637z"/>
         </svg>
       </a>
