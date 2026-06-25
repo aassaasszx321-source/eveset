@@ -175,6 +175,7 @@ export default function Home() {
                       className="gold-border bg-card hover:gold-glow transition-all cursor-pointer p-4 text-center"
                       onClick={() => handlePackageClick(pkg, '12')}
                     >
+                      <img src={pkg.logo} alt={pkg.name} className="h-12 w-auto mx-auto mb-3" />
                       <p className="text-xs text-muted-foreground mb-2">سنة واحدة</p>
                       <p className="text-2xl font-bold text-accent mb-2">
                         {pkg.prices['12']}
@@ -192,6 +193,7 @@ export default function Home() {
                       className="gold-border bg-card hover:gold-glow transition-all cursor-pointer p-4 text-center"
                       onClick={() => handlePackageClick(pkg, '6')}
                     >
+                      <img src={pkg.logo} alt={pkg.name} className="h-12 w-auto mx-auto mb-3" />
                       <p className="text-xs text-muted-foreground mb-2">6 أشهر</p>
                       <p className="text-2xl font-bold text-accent mb-2">
                         {pkg.prices['6']}
@@ -205,6 +207,7 @@ export default function Home() {
                     className="gold-border bg-card hover:gold-glow transition-all cursor-pointer p-4 text-center"
                     onClick={() => handlePackageClick(pkg, '3')}
                   >
+                    <img src={pkg.logo} alt={pkg.name} className="h-12 w-auto mx-auto mb-3" />
                     <p className="text-xs text-muted-foreground mb-2">3 أشهر</p>
                     <p className="text-2xl font-bold text-accent mb-2">
                       {pkg.prices['3']}

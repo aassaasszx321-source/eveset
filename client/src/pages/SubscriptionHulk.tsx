@@ -2,9 +2,18 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { MessageCircle, Home } from 'lucide-react';
 import { useLocation } from 'wouter';
+import { useEffect } from 'react';
 
 export default function SubscriptionHulk() {
   const [, setLocation] = useLocation();
+
+  useEffect(() => {
+    document.title = 'مميزات اشتراك هولك الألماني Hulk IPTV | قوة وثبات خارق';
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'تعرف على سيرفر هولك الألماني (Hulk IPTV) الأقوى للمباريات والمسلسلات. بنية تحتية ألمانية قوية تضمن تجربة مشاهدة مستقرة ومحمية من التوقفات.');
+    }
+  }, []);
 
   const handleWhatsApp = () => {
     const message = 'أريد الاشتراك في خدمة هولك IPTV';

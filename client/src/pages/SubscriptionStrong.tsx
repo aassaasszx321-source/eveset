@@ -2,9 +2,18 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Home } from 'lucide-react';
 import { useLocation } from 'wouter';
+import { useEffect } from 'react';
 
 export default function SubscriptionStrong() {
   const [, setLocation] = useLocation();
+
+  useEffect(() => {
+    document.title = 'مميزات اشتراك سترونق Strong 4K IPTV | دقة فائقة 8K';
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'اشترك في سيرفر سترونق (Strong 4K) واستمتع بأعلى دقة بث للمباريات والأفلام السينمائية. أضخم مكتبة أفلام متجددة يومياً بجودة نقية تماماً.');
+    }
+  }, []);
 
   return (
     <div className="min-h-screen bg-background text-foreground" dir="rtl">

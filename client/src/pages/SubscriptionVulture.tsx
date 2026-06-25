@@ -2,9 +2,18 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Home } from 'lucide-react';
 import { useLocation } from 'wouter';
+import { useEffect } from 'react';
 
 export default function SubscriptionVulture() {
   const [, setLocation] = useLocation();
+
+  useEffect(() => {
+    document.title = 'مميزات اشتراك فولتشر Vulture IPTV | الاشتراك الترفيهي المتميز';
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'استمتع بـ اشتراك فلوتشر الترفيهي من الطراز الأول. مكتبة مسلسلات وأفلام حصرية عملاقة وثبات ممتاز أثناء المباريات والقمم الكروية.');
+    }
+  }, []);
 
   return (
     <div className="min-h-screen bg-background text-foreground" dir="rtl">

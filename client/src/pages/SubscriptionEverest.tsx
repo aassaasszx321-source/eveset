@@ -2,9 +2,18 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { MessageCircle, Home } from 'lucide-react';
 import { useLocation } from 'wouter';
+import { useEffect } from 'react';
 
 export default function SubscriptionEverest() {
   const [, setLocation] = useLocation();
+
+  useEffect(() => {
+    document.title = 'مميزات اشتراك ايفرست IPTV | السيرفر الأكثر ثباتاً بدون تقطيع';
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'اكتشف مميزات سيرفر إيفرست (Everest IPTV) الأصلي. استمتع بثبات خارق ومتابعة جميع المباريات والبطولات والأفلام بجودة عالية وبدون أي تقطيع.');
+    }
+  }, []);
 
   const handleWhatsApp = () => {
     const message = 'أريد الاشتراك في خدمة إيفرست IPTV';

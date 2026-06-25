@@ -2,9 +2,18 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Home } from 'lucide-react';
 import { useLocation } from 'wouter';
+import { useEffect } from 'react';
 
 export default function SubscriptionSmarters() {
   const [, setLocation] = useLocation();
+
+  useEffect(() => {
+    document.title = 'مميزات اشتراك سمارترز IPTV Smarters | خيار التوفير والمتعة';
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'وفر فلوسك مع اشتراك سمارترز الخيار الاقتصادي الأسهل والأكثر توافقاً على شاشات سمارت, الهواتف, والكمبيوتر بواجهة تشغيل مستقرة وبدون تقطيع.');
+    }
+  }, []);
 
   return (
     <div className="min-h-screen bg-background text-foreground" dir="rtl">
