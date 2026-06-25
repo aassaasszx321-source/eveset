@@ -303,10 +303,10 @@ export default function Home() {
         href="https://wa.me/966580928565"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-8 right-8 z-50 rounded-full shadow-2xl animate-pulse transition-all duration-300 hover:scale-110 flex items-center justify-center w-16 h-16"
+        className="fixed bottom-8 right-8 z-50 rounded-full shadow-2xl animate-pulse transition-all duration-300 hover:scale-110 flex items-center justify-center w-48 h-48"
         aria-label="Contact via WhatsApp"
       >
-        <img src="/assets/images/whatsapp-icon.png" alt="WhatsApp" className="w-16 h-16 rounded-full" />
+        <img src="/assets/images/whatsapp-icon.png" alt="WhatsApp" className="w-48 h-48 rounded-full" />
       </a>
 
       {/* Product Detail Drawer */}
