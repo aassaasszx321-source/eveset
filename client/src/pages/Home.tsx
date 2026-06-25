@@ -172,7 +172,7 @@ export default function Home() {
                   <div className="grid grid-cols-2 gap-4">
                     {/* 12 Months */}
                     <Card
-                      className="gold-border bg-card hover:gold-glow transition-all cursor-pointer p-4 text-center"
+                      className="gold-border bg-card hover:gold-glow transition-all cursor-pointer p-4 text-center fade-in-up"
                       onClick={() => handlePackageClick(pkg, '12')}
                     >
                       <img src={pkg.logo} alt={pkg.name} className="h-12 w-auto mx-auto mb-3" />
@@ -193,7 +193,7 @@ export default function Home() {
 
                     {/* 6 Months */}
                     <Card
-                      className="gold-border bg-card hover:gold-glow transition-all cursor-pointer p-4 text-center"
+                      className="gold-border bg-card hover:gold-glow transition-all cursor-pointer p-4 text-center fade-in-up-delay-1"
                       onClick={() => handlePackageClick(pkg, '6')}
                     >
                       <img src={pkg.logo} alt={pkg.name} className="h-12 w-auto mx-auto mb-3" />
@@ -210,7 +210,7 @@ export default function Home() {
 
                   {/* Row 2: 3 Months (Centered) */}
                   <Card
-                    className="gold-border bg-card hover:gold-glow transition-all cursor-pointer p-4 text-center"
+                    className="gold-border bg-card hover:gold-glow transition-all cursor-pointer p-4 text-center fade-in-up-delay-2"
                     onClick={() => handlePackageClick(pkg, '3')}
                   >
                     <img src={pkg.logo} alt={pkg.name} className="h-12 w-auto mx-auto mb-3" />
@@ -303,10 +303,11 @@ export default function Home() {
         href="https://wa.me/966580928565"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-8 right-8 z-50 rounded-full shadow-2xl animate-pulse transition-all duration-300 hover:scale-110 flex items-center justify-center w-48 h-48"
+        className="fixed bottom-8 right-8 z-50 rounded-full shadow-2xl animate-pulse transition-all duration-300 hover:scale-110 flex items-center justify-center"
+        style={{ width: '70px', height: '70px' }}
         aria-label="Contact via WhatsApp"
       >
-        <img src="/assets/images/whatsapp-icon.png" alt="WhatsApp" className="w-48 h-48 rounded-full" />
+        <img src="/assets/images/whatsapp-icon.png" alt="WhatsApp" className="rounded-full" style={{ width: '70px', height: '70px' }} />
       </a>
 
       {/* Product Detail Drawer */}
