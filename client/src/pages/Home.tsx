@@ -337,8 +337,8 @@ export default function Home() {
         className="rounded-full shadow-2xl animate-pulse transition-all duration-300 hover:scale-110 flex items-center justify-center"
         style={{ 
           position: 'fixed', 
-          bottom: '20px', 
-          right: '20px', 
+          bottom: '30px', 
+          right: '30px', 
           zIndex: 9999,
           width: '280px', 
           height: '280px' 
