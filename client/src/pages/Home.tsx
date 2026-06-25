@@ -158,7 +158,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: 'url(https://i.postimg.cc/XJhcC84B/1782424634865.png)' }}></div>
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/60"></div>
         <div className="container relative z-10 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 text-gradient-gold">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 text-gradient-gold drop-shadow-lg" style={{ textShadow: '0 0 30px rgba(212, 175, 55, 0.5), 0 2px 10px rgba(0, 0, 0, 0.8)' }}>
             ارتق إلى قمة تجربة المشاهدة
           </h1>
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
@@ -173,7 +173,7 @@ export default function Home() {
       {/* Packages Section */}
       <section className="py-20 bg-muted/30">
         <div className="container">
-          <h2 className="text-4xl font-bold text-center mb-4 text-gradient-gold">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4" style={{ background: 'linear-gradient(135deg, #FFD700 0%, #FFF8DC 50%, #FFD700 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', textShadow: '0 0 20px rgba(212, 175, 55, 0.3)', filter: 'drop-shadow(0 0 15px rgba(212, 175, 55, 0.4))' }}>
             باقاتنا المتميزة
           </h2>
           <p className="text-center text-muted-foreground mb-12">
