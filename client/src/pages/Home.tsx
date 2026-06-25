@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
@@ -77,6 +77,31 @@ export default function Home() {
   const [, setLocation] = useLocation();
   const [selectedProduct, setSelectedProduct] = useState<any>(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    cardsRef.current.forEach((card) => {
+      if (card) observer.observe(card);
+    });
+
+    return () => {
+      cardsRef.current.forEach((card) => {
+        if (card) observer.unobserve(card);
+      });
+    };
+  }, []);
 
   const handlePackageClick = (pkg: any, duration: '3' | '6' | '12') => {
     const price = pkg.prices[duration];
@@ -157,8 +182,14 @@ export default function Home() {
 
           {/* Packages Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {PACKAGES.map((pkg) => (
-              <div key={pkg.id} className="space-y-6">
+            {PACKAGES.map((pkg, index) => (
+              <div 
+                key={pkg.id} 
+                className="space-y-6" 
+                ref={(el) => {
+                  if (el) cardsRef.current[index] = el;
+                }}
+              >
                 {/* Package Header */}
                 <div className="text-center">
                   <img src={pkg.logo} alt={pkg.name} className="h-16 w-auto mx-auto mb-3" />
@@ -304,10 +335,10 @@ export default function Home() {
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-8 right-8 z-50 rounded-full shadow-2xl animate-pulse transition-all duration-300 hover:scale-110 flex items-center justify-center"
-        style={{ width: '70px', height: '70px' }}
+        style={{ width: '280px', height: '280px' }}
         aria-label="Contact via WhatsApp"
       >
-        <img src="/assets/images/whatsapp-icon.png" alt="WhatsApp" className="rounded-full" style={{ width: '70px', height: '70px' }} />
+        <img src="/assets/images/whatsapp-icon.png" alt="WhatsApp" className="rounded-full" style={{ width: '280px', height: '280px' }} />
       </a>
 
       {/* Product Detail Drawer */}
