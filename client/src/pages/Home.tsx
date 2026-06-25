@@ -334,18 +334,19 @@ export default function Home() {
         href="https://wa.me/966580928565"
         target="_blank"
         rel="noopener noreferrer"
-        className="rounded-full shadow-2xl animate-pulse transition-all duration-300 hover:scale-110 flex items-center justify-center"
+        className="rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 flex items-center justify-center"
         style={{ 
           position: 'fixed', 
           bottom: '30px', 
           right: '30px', 
           zIndex: 9999,
-          width: '280px', 
-          height: '280px' 
+          width: '70px', 
+          height: '70px',
+          backgroundColor: '#25D366'
         }}
         aria-label="Contact via WhatsApp"
       >
-        <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663785462390/UYCFDTDq8euze4tP5KjcSD/whatsapp-floating-button-ZaiZA42V9DXzbZYRDQuGWY.webp" alt="WhatsApp" className="rounded-full" style={{ width: '100%', height: '100%' }} />
+        <img src="https://d2xsxph8kpxj0f.cloudfront.net/310519663785462390/UYCFDTDq8euze4tP5KjcSD/whatsapp-icon-small-BC2CLZC6QQZNYsGuAYueBc.webp" alt="WhatsApp" className="rounded-full" style={{ width: '100%', height: '100%' }} />
       </a>
 
       {/* Product Detail Drawer */}
