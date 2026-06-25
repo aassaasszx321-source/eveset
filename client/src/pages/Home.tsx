@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
-import { MessageCircle, Star, Zap, Smartphone, Apple, Tv, ChevronDown } from 'lucide-react';
+import { MessageCircle, Star, Zap, Smartphone, Apple, Tv, ChevronDown, Menu } from 'lucide-react';
 import { useLocation } from 'wouter';
 import ProductDetailDrawer from '@/components/ProductDetailDrawer';
 
@@ -39,7 +39,7 @@ const PACKAGES = [
     id: 'falcon',
     name: 'فالكون IPTV',
     subtitle: 'الاشتراك العصري',
-    logo: '/assets/images/falcon-logo.png',
+    logo: 'https://media.zid.store/cdn-cgi/image/w=auto,q=100,f=auto/https://media.zid.store/05d0953b-b7e2-47c6-af1b-eb46a948c8df/44d0a66f-ce07-4a1c-b5a9-65ccd196676c.png',
     prices: { '3': 130, '6': 200, '12': 300 },
     features: { channels: 7000, movies: 24000, series: 10000 },
     color: '#FFD700'
@@ -48,7 +48,7 @@ const PACKAGES = [
     id: 'vulture',
     name: 'فولتشر IPTV',
     subtitle: 'الترفيهي المتميز',
-    logo: '/assets/images/vulture-logo.png',
+    logo: 'https://media.zid.store/cdn-cgi/image/w=auto,q=100,f=auto/https://media.zid.store/05d0953b-b7e2-47c6-af1b-eb46a948c8df/9af8dd15-5cc0-42bb-9684-2477416105ed.png',
     prices: { '3': 69, '6': 99, '12': 149 },
     features: { channels: 10000, movies: 25000, series: 15000 },
     color: '#D4AF37'
@@ -57,7 +57,7 @@ const PACKAGES = [
     id: 'smarters',
     name: 'IPTV Smarters',
     subtitle: 'تطبيق موثوق',
-    logo: '/assets/images/smarters-logo.png',
+    logo: 'https://media.zid.store/cdn-cgi/image/w=auto,q=100,f=auto/https://media.zid.store/05d0953b-b7e2-47c6-af1b-eb46a948c8df/d94288e8-52f1-4eb5-b24f-5dfd8fee6d4d.png',
     prices: { '12': 99 },
     features: { channels: 10000, movies: 33000, series: 7000 },
     color: '#D4AF37'
@@ -102,12 +102,11 @@ export default function Home() {
       {/* Header */}
       <header className="sticky top-0 z-40 bg-background/80 backdrop-blur-md border-b border-accent/20">
         <div className="container flex items-center justify-between py-4">
-          {/* Left Dropdown */}
+          {/* Left Dropdown with Hamburger Menu */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="text-accent hover:bg-accent/10">
-                مميزات الاشتراكات
-                <ChevronDown className="w-4 h-4 mr-2" />
+              <Button variant="ghost" className="text-accent hover:bg-accent/10 p-2">
+                <Menu className="w-6 h-6" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start" className="w-48">
@@ -121,7 +120,7 @@ export default function Home() {
 
           {/* Center Logo */}
           <div className="flex-1 flex justify-center">
-            <img src="/assets/images/9kpro-logo.jpg" alt="9K Pro TV" className="h-12 w-auto" />
+            <img src="https://i.imgur.com/ZWrKn39.png" alt="9K Pro TV" className="h-12 w-auto" />
           </div>
 
           {/* Right Spacer */}
