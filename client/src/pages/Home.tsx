@@ -180,12 +180,15 @@ export default function Home() {
                       <p className="text-2xl font-bold text-accent mb-2">
                         {pkg.prices['12']}
                       </p>
-                      <p className="text-xs text-muted-foreground">ر.س</p>
+                      <p className="text-xs text-muted-foreground mb-3">ر.س</p>
                       {pkg.originalPrice12 && (
-                        <p className="text-xs line-through text-muted-foreground/50 mt-1">
+                        <p className="text-xs line-through text-muted-foreground/50 mb-3">
                           {pkg.originalPrice12}
                         </p>
                       )}
+                      <button className="text-accent hover:text-accent/80 text-sm font-semibold transition-colors" onClick={(e) => { e.stopPropagation(); handlePackageClick(pkg, '12'); }}>
+                        اطلب الآن
+                      </button>
                     </Card>
 
                     {/* 6 Months */}
@@ -198,7 +201,10 @@ export default function Home() {
                       <p className="text-2xl font-bold text-accent mb-2">
                         {pkg.prices['6']}
                       </p>
-                      <p className="text-xs text-muted-foreground">ر.س</p>
+                      <p className="text-xs text-muted-foreground mb-3">ر.س</p>
+                      <button className="text-accent hover:text-accent/80 text-sm font-semibold transition-colors" onClick={(e) => { e.stopPropagation(); handlePackageClick(pkg, '6'); }}>
+                        اطلب الآن
+                      </button>
                     </Card>
                   </div>
 
@@ -212,7 +218,10 @@ export default function Home() {
                     <p className="text-2xl font-bold text-accent mb-2">
                       {pkg.prices['3']}
                     </p>
-                    <p className="text-xs text-muted-foreground">ر.س</p>
+                    <p className="text-xs text-muted-foreground mb-3">ر.س</p>
+                    <button className="text-accent hover:text-accent/80 text-sm font-semibold transition-colors" onClick={(e) => { e.stopPropagation(); handlePackageClick(pkg, '3'); }}>
+                      اطلب الآن
+                    </button>
                   </Card>
                 </div>
               </div>
