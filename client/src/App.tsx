@@ -5,11 +5,17 @@ import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
+import ActivationAndroid from "./pages/ActivationAndroid";
+import ActivationIOS from "./pages/ActivationIOS";
+import ActivationSamsung from "./pages/ActivationSamsung";
 
 function Router() {
   return (
     <Switch>
       <Route path={"/"} component={Home} />
+      <Route path={"/activation/android"} component={ActivationAndroid} />
+      <Route path={"/activation/ios"} component={ActivationIOS} />
+      <Route path={"/activation/samsung"} component={ActivationSamsung} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>
