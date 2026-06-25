@@ -334,8 +334,15 @@ export default function Home() {
         href="https://wa.me/966580928565"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-8 right-8 z-50 rounded-full shadow-2xl animate-pulse transition-all duration-300 hover:scale-110 flex items-center justify-center"
-        style={{ width: '280px', height: '280px' }}
+        className="rounded-full shadow-2xl animate-pulse transition-all duration-300 hover:scale-110 flex items-center justify-center"
+        style={{ 
+          position: 'fixed', 
+          bottom: '20px', 
+          right: '20px', 
+          zIndex: 9999,
+          width: '280px', 
+          height: '280px' 
+        }}
         aria-label="Contact via WhatsApp"
       >
         <img src="/assets/images/whatsapp-icon.png" alt="WhatsApp" className="rounded-full" style={{ width: '280px', height: '280px' }} />
