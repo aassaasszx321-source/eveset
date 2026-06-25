@@ -8,6 +8,9 @@ import Home from "./pages/Home";
 import ActivationAndroid from "./pages/ActivationAndroid";
 import ActivationIOS from "./pages/ActivationIOS";
 import ActivationSamsung from "./pages/ActivationSamsung";
+import SubscriptionEverest from "./pages/SubscriptionEverest";
+import SubscriptionHulk from "./pages/SubscriptionHulk";
+import SubscriptionFalcon from "./pages/SubscriptionFalcon";
 
 function Router() {
   return (
@@ -16,6 +19,9 @@ function Router() {
       <Route path={"/activation/android"} component={ActivationAndroid} />
       <Route path={"/activation/ios"} component={ActivationIOS} />
       <Route path={"/activation/samsung"} component={ActivationSamsung} />
+      <Route path={"/subscription/everest"} component={SubscriptionEverest} />
+      <Route path={"/subscription/hulk"} component={SubscriptionHulk} />
+      <Route path={"/subscription/falcon"} component={SubscriptionFalcon} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>

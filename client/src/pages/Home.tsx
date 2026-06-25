@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { MessageCircle, Star, Zap, Smartphone, Apple, Tv } from 'lucide-react';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+import { MessageCircle, Star, Zap, Smartphone, Apple, Tv, ChevronDown } from 'lucide-react';
 import { useLocation } from 'wouter';
 import ProductDetailDrawer from '@/components/ProductDetailDrawer';
 
@@ -63,6 +64,15 @@ const PACKAGES = [
   }
 ];
 
+const SUBSCRIPTION_PAGES = [
+  { id: 'everest', label: 'إيفرست', path: '/subscription/everest' },
+  { id: 'hulk', label: 'هولك', path: '/subscription/hulk' },
+  { id: 'strong4k', label: 'سترونق', path: '/subscription/strong4k' },
+  { id: 'falcon', label: 'فالكون', path: '/subscription/falcon' },
+  { id: 'vulture', label: 'فولتشر', path: '/subscription/vulture' },
+  { id: 'smarters', label: 'سمارترز', path: '/subscription/smarters' }
+];
+
 export default function Home() {
   const [, setLocation] = useLocation();
   const [selectedProduct, setSelectedProduct] = useState<any>(null);
@@ -92,13 +102,30 @@ export default function Home() {
       {/* Header */}
       <header className="sticky top-0 z-40 bg-background/80 backdrop-blur-md border-b border-accent/20">
         <div className="container flex items-center justify-between py-4">
-          <div className="flex items-center gap-2">
+          {/* Left Dropdown */}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" className="text-accent hover:bg-accent/10">
+                مميزات الاشتراكات
+                <ChevronDown className="w-4 h-4 mr-2" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="start" className="w-48">
+              {SUBSCRIPTION_PAGES.map((page) => (
+                <DropdownMenuItem key={page.id} onClick={() => setLocation(page.path)}>
+                  {page.label}
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+
+          {/* Center Logo */}
+          <div className="flex-1 flex justify-center">
             <img src="/assets/images/9kpro-logo.jpg" alt="9K Pro TV" className="h-12 w-auto" />
           </div>
-          <Button onClick={handleGeneralWhatsApp} className="bg-accent text-accent-foreground hover:bg-accent/90">
-            <MessageCircle className="w-4 h-4 ml-2" />
-            تواصل معنا
-          </Button>
+
+          {/* Right Spacer */}
+          <div className="w-32"></div>
         </div>
       </header>
 
@@ -242,14 +269,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Floating WhatsApp Button */}
-      <button
-        onClick={handleGeneralWhatsApp}
-        className="fixed bottom-8 right-8 z-40 bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-lg animate-pulse"
-      >
-        <MessageCircle className="w-6 h-6" />
-      </button>
 
       {/* Footer */}
       <footer className="bg-card border-t border-accent/20 py-12">
