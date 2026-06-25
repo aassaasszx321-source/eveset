@@ -345,7 +345,7 @@ export default function Home() {
         }}
         aria-label="Contact via WhatsApp"
       >
-        <img src="/assets/images/whatsapp-icon.png" alt="WhatsApp" className="rounded-full" style={{ width: '280px', height: '280px' }} />
+        <img src="/assets/images/whatsapp-icon.png" alt="WhatsApp" className="rounded-full" style={{ width: '100%', height: '100%' }} />
       </a>
 
       {/* Product Detail Drawer */}
