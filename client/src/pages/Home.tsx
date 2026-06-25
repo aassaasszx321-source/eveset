@@ -1,25 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { MessageCircle, Star, Zap, Smartphone, Apple, Tv, ChevronLeft, ChevronRight } from 'lucide-react';
+import { MessageCircle, Star, Zap, Smartphone, Apple, Tv } from 'lucide-react';
 import { useLocation } from 'wouter';
 import ProductDetailDrawer from '@/components/ProductDetailDrawer';
-
-// Carousel slides
-const CAROUSEL_SLIDES = [
-  {
-    id: 'movies',
-    image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663785462390/UYCFDTDq8euze4tP5KjcSD/carousel-movies-CnHTj9bofLFVMMSL8cZHCL.webp',
-    title: 'أحدث الأفلام والمسلسلات',
-    description: 'احصل على أفضل الأفلام والمسلسلات الحصرية'
-  },
-  {
-    id: 'sports',
-    image: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663785462390/UYCFDTDq8euze4tP5KjcSD/carousel-sports-cFdtwAbiP57sEbWqwLXnMW.webp',
-    title: 'جميع البطولات الكبرى',
-    description: 'شاهد كل مباريات البطولات العالمية'
-  }
-];
 
 const PACKAGES = [
   {
@@ -80,30 +64,9 @@ const PACKAGES = [
 ];
 
 export default function Home() {
-  const [, navigate] = useLocation();
+  const [, setLocation] = useLocation();
   const [selectedProduct, setSelectedProduct] = useState<any>(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState(0);
-
-  // Auto-rotate carousel every 5 seconds
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % CAROUSEL_SLIDES.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, []);
-
-  const goToSlide = (index: number) => {
-    setCurrentSlide(index);
-  };
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % CAROUSEL_SLIDES.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + CAROUSEL_SLIDES.length) % CAROUSEL_SLIDES.length);
-  };
 
   const handlePackageClick = (pkg: any, duration: '3' | '6' | '12') => {
     const price = pkg.prices[duration];
@@ -138,61 +101,6 @@ export default function Home() {
           </Button>
         </div>
       </header>
-
-      {/* Carousel Section */}
-      <div className="relative w-full h-96 overflow-hidden bg-black mt-20">
-        {/* Slides */}
-        <div className="relative w-full h-full">
-          {CAROUSEL_SLIDES.map((slide, index) => (
-            <div
-              key={slide.id}
-              className={`absolute inset-0 transition-opacity duration-1000 ${
-                index === currentSlide ? 'opacity-100' : 'opacity-0'
-              }`}
-            >
-              <img
-                src={slide.image}
-                alt={slide.title}
-                className="w-full h-full object-cover"
-              />
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-            </div>
-          ))}
-        </div>
-
-        {/* Navigation Buttons */}
-        <button
-          onClick={prevSlide}
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-gold/20 hover:bg-gold/40 text-white p-3 rounded-full transition-all duration-200"
-          aria-label="Previous slide"
-        >
-          <ChevronRight className="w-6 h-6" />
-        </button>
-        <button
-          onClick={nextSlide}
-          className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-gold/20 hover:bg-gold/40 text-white p-3 rounded-full transition-all duration-200"
-          aria-label="Next slide"
-        >
-          <ChevronLeft className="w-6 h-6" />
-        </button>
-
-        {/* Dots Navigation */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-3">
-          {CAROUSEL_SLIDES.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => goToSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                index === currentSlide
-                  ? 'bg-gold w-8'
-                  : 'bg-white/50 hover:bg-white/80'
-              }`}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          ))}
-        </div>
-      </div>
 
       {/* Hero Section */}
       <section className="relative py-20 overflow-hidden">
@@ -291,19 +199,19 @@ export default function Home() {
           </h2>
 
           <div className="grid md:grid-cols-3 gap-6">
-            <Card className="gold-border bg-card p-6 cursor-pointer hover:gold-glow transition-all" onClick={() => navigate('/activation/android')}>
+            <Card className="gold-border bg-card p-6 cursor-pointer hover:gold-glow transition-all" onClick={() => setLocation('/activation/android')}>
               <Smartphone className="w-12 h-12 text-accent mx-auto mb-4" />
               <h3 className="text-xl font-bold text-center mb-2">أندرويد والشاومي</h3>
               <p className="text-center text-muted-foreground text-sm">طريقة التفعيل على Google TV والأندرويد</p>
             </Card>
 
-            <Card className="gold-border bg-card p-6 cursor-pointer hover:gold-glow transition-all" onClick={() => navigate('/activation/ios')}>
+            <Card className="gold-border bg-card p-6 cursor-pointer hover:gold-glow transition-all" onClick={() => setLocation('/activation/ios')}>
               <Apple className="w-12 h-12 text-accent mx-auto mb-4" />
               <h3 className="text-xl font-bold text-center mb-2">آيفون وآبل تي في</h3>
               <p className="text-center text-muted-foreground text-sm">طريقة التفعيل على أجهزة Apple</p>
             </Card>
 
-            <Card className="gold-border bg-card p-6 cursor-pointer hover:gold-glow transition-all" onClick={() => navigate('/activation/samsung')}>
+            <Card className="gold-border bg-card p-6 cursor-pointer hover:gold-glow transition-all" onClick={() => setLocation('/activation/samsung')}>
               <Tv className="w-12 h-12 text-accent mx-auto mb-4" />
               <h3 className="text-xl font-bold text-center mb-2">سامسونج وإل جي</h3>
               <p className="text-center text-muted-foreground text-sm">طريقة التفعيل على أجهزة التلفاز الذكية</p>
@@ -359,23 +267,12 @@ export default function Home() {
         </div>
       </footer>
 
-      {/* Floating WhatsApp Button */}
-      <button
-        onClick={handleGeneralWhatsApp}
-        className="fixed bottom-8 right-8 z-50 bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-2xl animate-pulse transition-all duration-300 hover:scale-110"
-        aria-label="Contact via WhatsApp"
-      >
-        <MessageCircle className="w-6 h-6" />
-      </button>
-
       {/* Product Detail Drawer */}
-      {selectedProduct && (
-        <ProductDetailDrawer
-          isOpen={isDrawerOpen}
-          onClose={() => setIsDrawerOpen(false)}
-          package={selectedProduct}
-        />
-      )}
+      <ProductDetailDrawer
+        isOpen={isDrawerOpen}
+        onClose={() => setIsDrawerOpen(false)}
+        package={selectedProduct}
+      />
     </div>
   );
 }
