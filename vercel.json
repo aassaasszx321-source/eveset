@@ -1,17 +1,11 @@
 {
   "version": 2,
-  "buildCommand": "pnpm build",
-  "devCommand": "pnpm dev",
-  "installCommand": "pnpm install",
-  "framework": "vite",
-  "outputDirectory": "dist",
-  "env": {
-    "NODE_ENV": "production"
-  },
+  "builds": [
+    { "src": "server/index.ts", "use": "@vercel/node" },
+    { "src": "package.json", "use": "@vercel/static-build", "config": { "distDir": "dist" } }
+  ],
   "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
+    { "source": "/api/(.*)", "destination": "server/index.ts" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
